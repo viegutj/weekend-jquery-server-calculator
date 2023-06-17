@@ -1,43 +1,45 @@
 ## Base Planning
 - [ ] - Create a user interface where the user can input two values (2 input elements) and the select type of mathematical operation. When the submit (`=` button) is clicked, capture this input, bundle it up in an object, and send this object to the server via a POST. There should also be a 'C' button that will clear the user input fields.
     
-    [ ] - create HTML document
+    [x] - create HTML document
     
-    [ ] - add two input elements
+    [x] - add two input elements
     
-    [ ] - add operations buttons for:
+    [x] - add operations buttons for:
     
-        [ ] - (+) addition
+        [x] - (+) addition
     
-        [ ] - (-) subtraction
+        [x] - (-) subtraction
     
-        [ ] - (*) multiplication
+        [x] - (*) multiplication
         
-        [ ] - (/) division
+        [x] - (/) division
     
-    [ ] - add a submit button (=)
+    [x] - add a submit button (=)
     
-    [ ] - add a button labeled C
+    [x] - add a button labeled C
     
-    [ ] - Create client.js
+    [x] - Create client.js
     
-    [ ] - add jQuery file
+    [x] - add jQuery boilerplate
     
-    [ ] - add jQuery boilerplate
+    [x] - add jQuery file
     
-    [ ] - create Event Listener and Handler for submit button
+    [x] - create Event Listener and Handler for submit button
     
-    [ ] - create Event Listener and Handler for clear button
+    [x] - create Event Listener and Handler for clear button
 
 - [ ] - Build out the server-side logic to compute the numbers as appropriate. The server should be able to handle Addition, Subtraction, Multiplication, and Division. Once the calculation is complete, send back the OK. You should do a GET request after the POST to get the actual calculation.
     
-    [ ] - npm install node
+    [x] - npm install node
 
-    [ ] - npm install express
+    [x] - npm install express
 
-    [ ] - set up folder/file structure
+    [x] - set up folder/file structure
 
     [ ] - write GET/POST requests (Write the flow of data on paper!)
+        GET: gives slient the array of problems and solutions
+        POST: sends client data to server
 
 - [ ] - Keep a historical record of all math operations and solutions on the server. Display a list of all previous calculations on the page when it loads using a GET request. Update the list when a new calculation is made. 
     
