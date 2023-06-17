@@ -25,12 +25,38 @@ let calculatorHistory = []
 app.get('/calculator', (req, res) => {
     console.log('in server-side app.get!');
     // send data back to client.js
+    // define current object
+    let currentObject = calculatorHistory[calculatorHistory.length-1];
+    console.log('currentObject is:', currentObject);
+    // define operator using if else string conversion
+    if (currentObject === undefined){
+        return ''
+    }
+    if (currentObject.operator == '+') {
+        currentObject.result = Number(currentObject.inputOneProp) + Number(currentObject.inputTwoProp);
+        console.log('currentObject is:', currentObject);
+    } else if (currentObject.operator === '-'){
+        currentObject.result = Number(currentObject.inputOneProp) - Number(currentObject.inputTwoProp);
+        console.log('currentObject is:', currentObject);
+    } else if (currentObject.operator === '*'){
+        currentObject.result = Number(currentObject.inputOneProp) * Number(currentObject.inputTwoProp);
+        console.log('currentObject is:', currentObject);
+    } else if (currentObject.operator === '/'){
+        currentObject.result = Number(currentObject.inputOneProp) / Number(currentObject.inputTwoProp);
+        console.log('currentObject is:', currentObject);
+    } else{
+        console.log("I am not in the if")
+        console.log('no input for operator');
+    }
+    console.log('currentObject.result is:', currentObject.result);
+    console.log('full calculatorHistory array is:', calculatorHistory);
     res.send(calculatorHistory);
 })
 
 // Post route
 app.post('/calculator', (req,res) => {
-    console.log('in serverside app.post!');
+    console.log('in server-side app.post!');
+    // req.body = currentObject
     calculatorHistory.push(req.body);
     res.sendStatus(201)
 });

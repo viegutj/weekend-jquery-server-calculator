@@ -37,13 +37,13 @@
 
     [x] - set up folder/file structure
 
-    [ ] - write GET/POST requests (Write the flow of data on paper!)
-        [ ] - GET: gives client the array of problems and solutions
-        [ ] - POST: sends client data to server
+    [x] - write GET/POST requests (Write the flow of data on paper!)
+        [x] - GET: gives client the array of problems and solutions
+        [x] - POST: sends client data to server
 
 - [ ] - Keep a historical record of all math operations and solutions on the server. Display a list of all previous calculations on the page when it loads using a GET request. Update the list when a new calculation is made. 
     
-    [ ] - create an array to store submitted objects
+    [x] - create an array to store submitted objects
 
     [ ] - create render function in client.js
 
