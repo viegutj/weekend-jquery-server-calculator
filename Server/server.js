@@ -18,19 +18,25 @@ app.use(express.static('server/public'));
 // enable bodyParser
 app.use(bodyParser.urlencoded({extended:true}))
 
+// Store our data
+let calculatorHistory = []
+
 // Get route
-app.get('/calculate', (req, res) => {
+app.get('/calculator', (req, res) => {
     console.log('in server-side app.get!');
     // send data back to client.js
+    res.send(calculatorHistory);
 })
 
 // Post route
-app.post('/calculate', (req,res) => {
+app.post('/calculator', (req,res) => {
     console.log('in serverside app.post!');
-})
+    calculatorHistory.push(req.body);
+    res.sendStatus(201)
+});
 
 
 // Start the server
 app.listen(port, () => {
     console.log('listening on port', port);
-})
+});
