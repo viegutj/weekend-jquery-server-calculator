@@ -29,25 +29,26 @@ app.get('/calculator', (req, res) => {
     let currentObject = calculatorHistory[calculatorHistory.length-1];
     console.log('currentObject is:', currentObject);
     // define operator using if else
-    if (currentObject === undefined){
-        return ''
-    }
-    if (currentObject.operator == '+') {
-        currentObject.result = Number(currentObject.inputOneProp) + Number(currentObject.inputTwoProp);
-        console.log('currentObject is:', currentObject);
-    } else if (currentObject.operator === '-'){
-        currentObject.result = Number(currentObject.inputOneProp) - Number(currentObject.inputTwoProp);
-        console.log('currentObject is:', currentObject);
-    } else if (currentObject.operator === '*'){
-        currentObject.result = Number(currentObject.inputOneProp) * Number(currentObject.inputTwoProp);
-        console.log('currentObject is:', currentObject);
-    } else if (currentObject.operator === '/'){
-        currentObject.result = Number(currentObject.inputOneProp) / Number(currentObject.inputTwoProp);
-        console.log('currentObject is:', currentObject);
-    } else{
-        console.log("I am not in the if")
-        console.log('no input for operator');
-    }
+    // if (currentObject === undefined){
+    //     return ''
+    // }
+    // if (currentObject.operator == '+') {
+    //     currentObject.result = Number(currentObject.inputOneProp) + Number(currentObject.inputTwoProp);
+    //     console.log('currentObject is:', currentObject);
+    // } else if (currentObject.operator === '-'){
+    //     currentObject.result = Number(currentObject.inputOneProp) - Number(currentObject.inputTwoProp);
+    //     console.log('currentObject is:', currentObject);
+    // } else if (currentObject.operator === '*'){
+    //     currentObject.result = Number(currentObject.inputOneProp) * Number(currentObject.inputTwoProp);
+    //     console.log('currentObject is:', currentObject);
+    // } else if (currentObject.operator === '/'){
+    //     currentObject.result = Number(currentObject.inputOneProp) / Number(currentObject.inputTwoProp);
+    //     console.log('currentObject is:', currentObject);
+    // } else{
+    //     console.log("I am not in the if")
+    //     console.log('no input for operator');
+    // }
+    currentObject.result = 'not defined yet'
     console.log('currentObject.result is:', currentObject.result);
     console.log('full calculatorHistory array is:', calculatorHistory);
     res.send(calculatorHistory);

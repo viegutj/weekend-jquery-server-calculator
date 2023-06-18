@@ -3,8 +3,7 @@ console.log('hello js');
 $(document).ready(onReady)
 
 //Store inputs as values
-let inputOne;
-let inputTwo;
+let inputValue;
 let operator;
 
 // inputOne = $('#input-one').val();
@@ -53,9 +52,8 @@ function postCalculatorData(){
         method: 'POST',
         url: '/calculator',
         data: {
-            inputOneProp: inputOne,
+            input: inputValue,
             operator: operator,
-            inputTwoProp: inputTwo,
             result: ''
         }
     }).then(function(response){
@@ -73,92 +71,108 @@ function additionButtonHandler(event){
     event.preventDefault()
     console.log('addition button clicked!');
     operator = '+';
+    $('#input').val(($('#input').val()) + '+');
 }
 
 function subtractionButtonHandler(event){
     event.preventDefault()
     console.log('subtraction button clicked!');
     operator = '-';
+    $('#input').val(($('#input').val()) + '-');
 }
 
 function multiplicationButtonHandler(event){
     event.preventDefault()
     console.log('multiplication button clicked!');
     operator = '*';
+    $('#input').val(($('#input').val()) + '*');
 }
 
 function divisionButtonHandler(event){
     event.preventDefault()
     console.log('division button clicked!');
     operator = '/';
+    $('#input').val(($('#input').val()) + '/');
 }
 
 function submitButtonHandler(event){
     event.preventDefault()
     console.log('submit button clicked!');
     // grab input one and two as local variables
-    inputOne = $('#input-one').val();
-    console.log('This is inputOne!', inputOne);
-    inputTwo = $('#input-two').val();   
-    console.log('This is inputTwo!', inputTwo);
+    // inputOne = $('#input-one').val();
+    // console.log('This is inputOne!', inputOne);
+    // inputTwo = $('#input-two').val();   
+    // console.log('This is inputTwo!', inputTwo);
+
+    //STRETCH: grab input as variable
+    inputValue = $('#input').val()
+    console.log('inputValue is:', inputValue);
     postCalculatorData();
 }
 
 function clearButtonHandler(event){
     event.preventDefault()
     console.log('clear button clicked!');
-    inputOne = $('#input-one').val('');
-    console.log('This is inputOne!', inputOne);
-    inputTwo = $('#input-two').val('');   
-    console.log('This is inputTwo!', inputTwo);
+    console.log('This is input before clear!', $('#input').val())
+    inputOne = $('#input').val('');
+    console.log('This is input after clear!', $('#input').val())
 }
 
 //Stretch Goal Buttons
 function zeroButtonHandler(event){
     event.preventDefault()
     console.log('zero-button was clicked!');
-    $('#input').val(($('#input').val()) + '0')
+    $('#input').val(($('#input').val()) + '0');
 }
 function oneButtonHandler(event){
     event.preventDefault()
     console.log('one-button was clicked!');
-    $('#input').val(($('#input').val()) + '1')
+    $('#input').val(($('#input').val()) + '1');
 }
 function twoButtonHandler(event){
     event.preventDefault()
     console.log('two-button was clicked!');
+    $('#input').val(($('#input').val()) + '2');
 }
 function threeButtonHandler(event){
     event.preventDefault()
     console.log('three-button was clicked!');
+    $('#input').val(($('#input').val()) + '3');
 }
 function fourButtonHandler(event){
     event.preventDefault()
     console.log('four-button was clicked!');
+    $('#input').val(($('#input').val()) + '4');
 }
 function fiveButtonHandler(event){
     event.preventDefault()
     console.log('five-button was clicked!');
+    $('#input').val(($('#input').val()) + '5');
 }
 function sixButtonHandler(event){
     event.preventDefault()
     console.log('six-button was clicked!');
+    $('#input').val(($('#input').val()) + '6');
 }
 function sevenButtonHandler(event){
     event.preventDefault()
     console.log('seven-button was clicked!');
+    $('#input').val(($('#input').val()) + '7');
 }
 function eightButtonHandler(event){
     event.preventDefault()
     console.log('eight-button was clicked!');
+    $('#input').val(($('#input').val()) + '8');
 }
 function nineButtonHandler(event){
     event.preventDefault()
     console.log('nine-button was clicked!');
+    $('#input').val(($('#input').val()) + '9');
 }
 function decimalButtonHandler(event){
     event.preventDefault()
     console.log('decimal-button was clicked!');
+    $('#input').val(($('#input').val()) + '.');
 }
 
 // Render function and its callback function
@@ -180,11 +194,12 @@ function appendHistory(response) {
     // console.log('responseHistoryString:', responseHistoryString);
     // $('#new-string').val('')
     // for (item of response) {
-        responseInputOne = response[response.length-1].inputOneProp
+        // responseInputOne = response[response.length-1].inputOneProp
+        // responseInputTwo = response[response.length-1].inputTwoProp
         responseOperator = response[response.length-1].operator
-        responseInputTwo = response[response.length-1].inputTwoProp
+        responseInput = response[response.length-1].input
         responseResult = response[response.length-1].result
-        console.log(`${responseInputOne} ${responseOperator} ${responseInputTwo} = ${responseResult}`);
-        responseHistoryString = `${responseInputOne} ${responseOperator} ${responseInputTwo} = ${responseResult}`
+        console.log(`${responseInput} ${responseResult}`);
+        responseHistoryString = `${responseInput} = ${responseResult}`
         $('#history-list').append('<li class="new-string">' + responseHistoryString + '</li>')
     }

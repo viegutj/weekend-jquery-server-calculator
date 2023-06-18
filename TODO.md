@@ -62,7 +62,7 @@
 
     - [x] - create listeners and handlers in client.js
 
-    - [ ] - modify existing handlers to append to one input element
+    - [x] - modify existing handlers to append to one input element
 
     - [ ] - modify logic on server.js and client.js to perform operations using the singular input.
 
