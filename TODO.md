@@ -56,7 +56,7 @@
 ## Stretch Planning
 - [ ] - Convert the interface to look and behave like a calculator as shown below. ![calculator interface](images/stretchGoal_interface.gif)
     
-    - [ ] - START NEW BRANCH
+    - [x] - START NEW BRANCH
 
     - [ ] - create new html buttons for numbers and decimal in index.html
 
