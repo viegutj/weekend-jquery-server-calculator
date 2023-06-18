@@ -28,7 +28,7 @@ app.get('/calculator', (req, res) => {
     // define current object
     let currentObject = calculatorHistory[calculatorHistory.length-1];
     console.log('currentObject is:', currentObject);
-    // define operator using if else string conversion
+    // define operator using if else
     if (currentObject === undefined){
         return ''
     }

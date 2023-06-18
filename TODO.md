@@ -60,7 +60,7 @@
 
     - [x] - create new html buttons for numbers and decimal in index.html
 
-    - [ ] - create listeners and handlers in client.js
+    - [x] - create listeners and handlers in client.js
 
     - [ ] - modify existing handlers to append to one input element
 

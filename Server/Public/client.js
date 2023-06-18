@@ -117,10 +117,12 @@ function clearButtonHandler(event){
 function zeroButtonHandler(event){
     event.preventDefault()
     console.log('zero-button was clicked!');
+    $('#input').val(($('#input').val()) + '0')
 }
 function oneButtonHandler(event){
     event.preventDefault()
     console.log('one-button was clicked!');
+    $('#input').val(($('#input').val()) + '1')
 }
 function twoButtonHandler(event){
     event.preventDefault()
