@@ -34,9 +34,13 @@ app.get('/calculator', (req, res) => {
         return ''
     }
 
-    // Use split() method to seperate string elements from post
+    // Use split() method to seperate string elements 
     // into an array
     // reassign values based on that array
+    if (currentObject.hasOwnProperty('input') == false) {
+        return calculatorHistory;
+    }
+
     let currentObjectArray = currentObject.input.split(/\+|\*|\-|\//);
     console.log('currentObjectArray created by split():', currentObjectArray);
     
