@@ -38,7 +38,7 @@ app.get('/calculator', (req, res) => {
     // into an array
     // reassign values based on that array
     if (currentObject.hasOwnProperty('input') == false) {
-        return calculatorHistory;
+        return res.send(calculatorHistory);
     }
 
     let currentObjectArray = currentObject.input.split(/\+|\*|\-|\//);
