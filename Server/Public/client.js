@@ -30,8 +30,34 @@ function onReady() {
     $('#nine-button').on('click', nineButtonHandler)
     $('#decimal-button').on('click', decimalButtonHandler)
     $('#delete-button').on('click', deleteButtonHandler)
+    $('#history-list').on('click', '.new-string', runPreviousSubmit)
 
     getHistory();
+}
+
+//not displaying inputTwoProp correctly, returning result 'null'
+function runPreviousSubmit(event) {
+    event.preventDefault();
+    console.log('in function runPreviousSubmit()!!');
+    console.log($(this).text());
+    inputValue = $(this).text();
+    function postOldData(){
+        $.ajax({
+            method:'POST',
+            url:'/calculator',
+            data: {
+                input: inputValue,
+                operator: operator,
+                result: ''
+            }
+        }).then(function(response){
+    console.log('In client-side postCalculatorData!');
+    // Call our getHistory()
+    getHistory();
+    }).catch(function(error){
+    alert('Something went wrong in POST', error)
+    })}
+    postOldData();
 }
 
 function getHistory(){
