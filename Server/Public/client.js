@@ -29,6 +29,7 @@ function onReady() {
     $('#eight-button').on('click', eightButtonHandler)
     $('#nine-button').on('click', nineButtonHandler)
     $('#decimal-button').on('click', decimalButtonHandler)
+    $('#delete-button').on('click', deleteButtonHandler)
 
     getHistory();
 }
@@ -62,6 +63,17 @@ function postCalculatorData(){
     getHistory();
     }).catch(function(error){
         alert('Something went wrong in POST', error)
+    })
+}
+
+function deleteHistory() {
+    $.ajax({
+        method: 'DELETE',
+        url: '/calculator',
+    }).then(function(response){
+        console.log('In client-side deleteHistory!');
+    }).catch(function(error){
+        alert('Something went wrong in DELETE', error)
     })
 }
 
@@ -128,59 +140,66 @@ function clearButtonHandler(event){
 
 //Stretch Goal Buttons
 function zeroButtonHandler(event){
-    event.preventDefault()
+    event.preventDefault();
     console.log('zero-button was clicked!');
     $('#input').val(($('#input').val()) + '0');
 }
 function oneButtonHandler(event){
-    event.preventDefault()
+    event.preventDefault();
     console.log('one-button was clicked!');
     $('#input').val(($('#input').val()) + '1');
 }
 function twoButtonHandler(event){
-    event.preventDefault()
+    event.preventDefault();
     console.log('two-button was clicked!');
     $('#input').val(($('#input').val()) + '2');
 }
 function threeButtonHandler(event){
-    event.preventDefault()
+    event.preventDefault();
     console.log('three-button was clicked!');
     $('#input').val(($('#input').val()) + '3');
 }
 function fourButtonHandler(event){
-    event.preventDefault()
+    event.preventDefault();
     console.log('four-button was clicked!');
     $('#input').val(($('#input').val()) + '4');
 }
 function fiveButtonHandler(event){
-    event.preventDefault()
+    event.preventDefault();
     console.log('five-button was clicked!');
     $('#input').val(($('#input').val()) + '5');
 }
 function sixButtonHandler(event){
-    event.preventDefault()
+    event.preventDefault();
     console.log('six-button was clicked!');
     $('#input').val(($('#input').val()) + '6');
 }
 function sevenButtonHandler(event){
-    event.preventDefault()
+    event.preventDefault();
     console.log('seven-button was clicked!');
     $('#input').val(($('#input').val()) + '7');
 }
 function eightButtonHandler(event){
-    event.preventDefault()
+    event.preventDefault();
     console.log('eight-button was clicked!');
     $('#input').val(($('#input').val()) + '8');
 }
 function nineButtonHandler(event){
-    event.preventDefault()
+    event.preventDefault();
     console.log('nine-button was clicked!');
     $('#input').val(($('#input').val()) + '9');
 }
 function decimalButtonHandler(event){
-    event.preventDefault()
+    event.preventDefault();
     console.log('decimal-button was clicked!');
     $('#input').val(($('#input').val()) + '.');
+}
+function deleteButtonHandler(event) {
+    event.preventDefault();
+    console.log('DELETE History button was clicked');
+    // DELETE method function called here
+    $('#history-list').empty();
+    deleteHistory();
 }
 
 // Render function and its callback function

@@ -84,6 +84,14 @@ app.post('/calculator', (req,res) => {
     res.sendStatus(201)
 });
 
+// Delete route
+app.delete('/calculator', (req,res) =>{
+    console.log('in server-side app.delete!');
+    calculatorHistory = []
+    console.log('calculatorHistory in app.delete:', calculatorHistory);
+    res.sendStatus(204)
+})
+
 
 // Start the server
 app.listen(port, () => {
