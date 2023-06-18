@@ -58,7 +58,7 @@
     
     - [x] - START NEW BRANCH
 
-    - [ ] - create new html buttons for numbers and decimal in index.html
+    - [x] - create new html buttons for numbers and decimal in index.html
 
     - [ ] - create listeners and handlers in client.js
 

@@ -19,6 +19,17 @@ function onReady() {
     $('#division-button').on('click', divisionButtonHandler)
     $('#submit-button').on('click', submitButtonHandler)
     $('#clear-button').on('click', clearButtonHandler)
+    $('#zero-button').on('click', zeroButtonHandler)
+    $('#one-button').on('click', oneButtonHandler)
+    $('#two-button').on('click', twoButtonHandler)
+    $('#three-button').on('click', threeButtonHandler)
+    $('#four-button').on('click', fourButtonHandler)
+    $('#five-button').on('click', fiveButtonHandler)
+    $('#six-button').on('click', sixButtonHandler)
+    $('#seven-button').on('click', sevenButtonHandler)
+    $('#eight-button').on('click', eightButtonHandler)
+    $('#nine-button').on('click', nineButtonHandler)
+    $('#decimal-button').on('click', decimalButtonHandler)
 
     getHistory();
 }
@@ -102,6 +113,53 @@ function clearButtonHandler(event){
     console.log('This is inputTwo!', inputTwo);
 }
 
+//Stretch Goal Buttons
+function zeroButtonHandler(event){
+    event.preventDefault()
+    console.log('zero-button was clicked!');
+}
+function oneButtonHandler(event){
+    event.preventDefault()
+    console.log('one-button was clicked!');
+}
+function twoButtonHandler(event){
+    event.preventDefault()
+    console.log('two-button was clicked!');
+}
+function threeButtonHandler(event){
+    event.preventDefault()
+    console.log('three-button was clicked!');
+}
+function fourButtonHandler(event){
+    event.preventDefault()
+    console.log('four-button was clicked!');
+}
+function fiveButtonHandler(event){
+    event.preventDefault()
+    console.log('five-button was clicked!');
+}
+function sixButtonHandler(event){
+    event.preventDefault()
+    console.log('six-button was clicked!');
+}
+function sevenButtonHandler(event){
+    event.preventDefault()
+    console.log('seven-button was clicked!');
+}
+function eightButtonHandler(event){
+    event.preventDefault()
+    console.log('eight-button was clicked!');
+}
+function nineButtonHandler(event){
+    event.preventDefault()
+    console.log('nine-button was clicked!');
+}
+function decimalButtonHandler(event){
+    event.preventDefault()
+    console.log('decimal-button was clicked!');
+}
+
+// Render function and its callback function
 function render(response) {
     console.log('Render function, the response is:', response);
     appendHistory(response);
