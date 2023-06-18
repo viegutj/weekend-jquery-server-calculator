@@ -29,16 +29,14 @@ app.get('/calculator', (req, res) => {
     let currentObject = calculatorHistory[calculatorHistory.length-1];
     console.log('currentObject is:', currentObject);
     
-    // Use split() method to seperate string elements 
-    // into an array
-    // reassign values based on that array
-    // let currentObjectArray = currentObject.input.split('+');
-    // currentObjectArray = currentObject.input.split('-');
-    // currentObjectArray = currentObject.input.split('*');
-    // currentObjectArray = currentObject.input.split('/');
-    if (currentObject === undefined){
+    // Prevent error from undefined currentObject
+    if (currentObject == undefined || currentObject == null || currentObject == ''){
         return ''
     }
+
+    // Use split() method to seperate string elements from post
+    // into an array
+    // reassign values based on that array
     let currentObjectArray = currentObject.input.split(/\+|\*|\-|\//);
     console.log('currentObjectArray created by split():', currentObjectArray);
     

@@ -1,14 +1,14 @@
+// Log to confirm that js is linked to html
 console.log('hello js');
 
+//import jQuery
 $(document).ready(onReady)
 
-//Store inputs as values
+//declare global variables
 let inputValue;
 let operator;
 
-// inputOne = $('#input-one').val();
-// inputTwo = $('#input-two').val();
-
+// create our jQuery onReady() function for user events and to retrieve history
 function onReady() {
     console.log('hey jQuery');
     // Write Event Listeners Here
@@ -32,13 +32,16 @@ function onReady() {
     $('#delete-button').on('click', deleteButtonHandler)
     $('#history-list').on('click', '.new-string', runPreviousSubmit)
 
+    // retrieve history of server
     getHistory();
 }
 
-//not displaying inputTwoProp correctly, returning result 'null'
+// Not displaying inputTwoProp correctly, returning result 'null'
+// Ask Emma about possible solutions
 function runPreviousSubmit(event) {
     event.preventDefault();
     console.log('in function runPreviousSubmit()!!');
+    // convert clicked string to text and store as variable for POST
     console.log($(this).text());
     inputValue = $(this).text();
     function postOldData(){
@@ -57,9 +60,13 @@ function runPreviousSubmit(event) {
     }).catch(function(error){
     alert('Something went wrong in POST', error)
     })}
+    // call function
     postOldData();
 }
 
+// create GET function
+// logging an error on refresh. Split() method from stretch goal is
+// causing the errors. Not sure how to resolve.
 function getHistory(){
     $.ajax({
         method: 'GET',
@@ -74,6 +81,7 @@ function getHistory(){
     })
 }
 
+// POST function
 function postCalculatorData(){
     $.ajax({
         method: 'POST',
@@ -92,6 +100,7 @@ function postCalculatorData(){
     })
 }
 
+// DELETE function
 function deleteHistory() {
     $.ajax({
         method: 'DELETE',
@@ -136,13 +145,8 @@ function divisionButtonHandler(event){
 function submitButtonHandler(event){
     event.preventDefault()
     console.log('submit button clicked!');
-    // grab input one and two as local variables
-    // inputOne = $('#input-one').val();
-    // console.log('This is inputOne!', inputOne);
-    // inputTwo = $('#input-two').val();   
-    // console.log('This is inputTwo!', inputTwo);
 
-    //STRETCH: grab input as variable
+    //Grab input as variable
     inputValue = $('#input').val()
     
     // Prevent empty inputValue submission
@@ -153,6 +157,7 @@ function submitButtonHandler(event){
         return alert('Please enter a valid input!')
     }
     console.log('inputValue is:', inputValue);
+    // call POST function
     postCalculatorData();
 }
 
@@ -228,7 +233,7 @@ function deleteButtonHandler(event) {
     deleteHistory();
 }
 
-// Render function and its callback function
+// Render function
 function render(response) {
     console.log('Render function, the response is:', response);
     appendHistory(response);
@@ -236,21 +241,13 @@ function render(response) {
     $('#result').append('<p>' + response[response.length-1].result + '</p>')
 }
 
+// Callback function for render
 function appendHistory(response) {
     console.log('In appendHistory, response:', response);
-    // responseInputOne = response.inputOneProp
-    // responseOperator = response.operator
-    // responseInputTwo = response.inputTwoProp
-    // responseResult = response.result
-    // console.log(`${responseInputOne} ${responseOperator} ${responseInputTwo} = ${responseResult}`);
-    // responseHistoryString = `${responseInputOne} ${responseOperator} ${responseInputTwo} = ${responseResult}`
-    // console.log('responseHistoryString:', responseHistoryString);
     $('#new-string').val('')
-    // for (item of response) {
         responseInputOne = response[response.length-1].inputOneProp
         responseInputTwo = response[response.length-1].inputTwoProp
         responseOperator = response[response.length-1].operator
-        // responseInput = response[response.length-1].input
         responseResult = response[response.length-1].result
         responseHistoryString = `${responseInputOne} ${responseOperator} ${responseInputTwo} = ${responseResult}`
         $('#history-list').append('<li class="new-string">' + responseHistoryString + '</li>')
