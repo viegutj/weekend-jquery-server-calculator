@@ -28,27 +28,49 @@ app.get('/calculator', (req, res) => {
     // define current object
     let currentObject = calculatorHistory[calculatorHistory.length-1];
     console.log('currentObject is:', currentObject);
+    
+    // Use split() method to seperate string elements 
+    // into an array
+    // reassign values based on that array
+    // let currentObjectArray = currentObject.input.split('+');
+    // currentObjectArray = currentObject.input.split('-');
+    // currentObjectArray = currentObject.input.split('*');
+    // currentObjectArray = currentObject.input.split('/');
+    if (currentObject === undefined){
+        return ''
+    }
+    let currentObjectArray = currentObject.input.split(/\+|\*|\-|\//);
+    console.log('currentObjectArray created by split():', currentObjectArray);
+    
+    // Use split array to assign two seperate inputs to evaluate
+    currentObject = {
+        inputOneProp: currentObjectArray[0],
+        inputTwoProp: currentObjectArray[1],
+        operator: currentObject.operator,
+        result: ''
+    }
+
     // define operator using if else
-    // if (currentObject === undefined){
-    //     return ''
-    // }
-    // if (currentObject.operator == '+') {
-    //     currentObject.result = Number(currentObject.inputOneProp) + Number(currentObject.inputTwoProp);
-    //     console.log('currentObject is:', currentObject);
-    // } else if (currentObject.operator === '-'){
-    //     currentObject.result = Number(currentObject.inputOneProp) - Number(currentObject.inputTwoProp);
-    //     console.log('currentObject is:', currentObject);
-    // } else if (currentObject.operator === '*'){
-    //     currentObject.result = Number(currentObject.inputOneProp) * Number(currentObject.inputTwoProp);
-    //     console.log('currentObject is:', currentObject);
-    // } else if (currentObject.operator === '/'){
-    //     currentObject.result = Number(currentObject.inputOneProp) / Number(currentObject.inputTwoProp);
-    //     console.log('currentObject is:', currentObject);
-    // } else{
-    //     console.log("I am not in the if")
-    //     console.log('no input for operator');
-    // }
-    currentObject.result = 'not defined yet'
+    if (currentObject.operator == '+') {
+        currentObject.result = Number(currentObject.inputOneProp) + Number(currentObject.inputTwoProp);
+        console.log('currentObject is:', currentObject);
+    } else if (currentObject.operator === '-'){
+        currentObject.result = Number(currentObject.inputOneProp) - Number(currentObject.inputTwoProp);
+        console.log('currentObject is:', currentObject);
+    } else if (currentObject.operator === '*'){
+        currentObject.result = Number(currentObject.inputOneProp) * Number(currentObject.inputTwoProp);
+        console.log('currentObject is:', currentObject);
+    } else if (currentObject.operator === '/'){
+        currentObject.result = Number(currentObject.inputOneProp) / Number(currentObject.inputTwoProp);
+        console.log('currentObject is:', currentObject);
+    } else{
+        console.log("I am not in the if")
+        console.log('no input for operator');
+    }
+
+    // add object to array calculatorHistory
+    calculatorHistory.push(currentObject)
+
     console.log('currentObject.result is:', currentObject.result);
     console.log('full calculatorHistory array is:', calculatorHistory);
     res.send(calculatorHistory);

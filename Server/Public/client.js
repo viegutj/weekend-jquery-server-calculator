@@ -106,6 +106,14 @@ function submitButtonHandler(event){
 
     //STRETCH: grab input as variable
     inputValue = $('#input').val()
+    
+    // Prevent empty inputValue submission
+    if(inputValue == null || inputValue == undefined || inputValue == ''){
+        return alert('Please enter a valid input!')
+    }
+    if(operator == null || operator == undefined || operator == ''){
+        return alert('Please enter a valid input!')
+    }
     console.log('inputValue is:', inputValue);
     postCalculatorData();
 }
@@ -192,14 +200,13 @@ function appendHistory(response) {
     // console.log(`${responseInputOne} ${responseOperator} ${responseInputTwo} = ${responseResult}`);
     // responseHistoryString = `${responseInputOne} ${responseOperator} ${responseInputTwo} = ${responseResult}`
     // console.log('responseHistoryString:', responseHistoryString);
-    // $('#new-string').val('')
+    $('#new-string').val('')
     // for (item of response) {
-        // responseInputOne = response[response.length-1].inputOneProp
-        // responseInputTwo = response[response.length-1].inputTwoProp
+        responseInputOne = response[response.length-1].inputOneProp
+        responseInputTwo = response[response.length-1].inputTwoProp
         responseOperator = response[response.length-1].operator
-        responseInput = response[response.length-1].input
+        // responseInput = response[response.length-1].input
         responseResult = response[response.length-1].result
-        console.log(`${responseInput} ${responseResult}`);
-        responseHistoryString = `${responseInput} = ${responseResult}`
+        responseHistoryString = `${responseInputOne} ${responseOperator} ${responseInputTwo} = ${responseResult}`
         $('#history-list').append('<li class="new-string">' + responseHistoryString + '</li>')
     }

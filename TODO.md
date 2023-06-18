@@ -54,7 +54,7 @@
 > Note: Do not use eval() to complete this assignment.
 
 ## Stretch Planning
-- [ ] - Convert the interface to look and behave like a calculator as shown below. ![calculator interface](images/stretchGoal_interface.gif)
+- [x] - Convert the interface to look and behave like a calculator as shown below. ![calculator interface](images/stretchGoal_interface.gif)
     
     - [x] - START NEW BRANCH
 
@@ -64,9 +64,9 @@
 
     - [x] - modify existing handlers to append to one input element
 
-    - [ ] - modify logic on server.js and client.js to perform operations using the singular input.
+    - [x] - modify logic on server.js and client.js to perform operations using the singular input.
 
-- [ ] - Only allow the POST call to happen if all necessary input is ready. *Data integrity is superfluously important! Sometimes users hit the "go button" without fully inputting the needed fields. Show an alert if they left something empty and don't send bad or incomplete data to the server.*
+- [x] - Only allow the POST call to happen if all necessary input is ready. *Data integrity is superfluously important! Sometimes users hit the "go button" without fully inputting the needed fields. Show an alert if they left something empty and don't send bad or incomplete data to the server.*
 
 - [ ] - Allow a user to clear the history by clicking on a button. Technically this shouldn't be a GET or a POST. Look into making a DELETE request! *GETs are used to, well, get information from the server. POSTs are used to send new info to the server. DELETEs are used for, you guessed it, deleting info already on the server.*
 
