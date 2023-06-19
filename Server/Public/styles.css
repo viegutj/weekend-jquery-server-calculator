@@ -1,0 +1,21 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+    border: 3px;
+    background-color: lightcyan;
+    text-align: center;
+}
+
+button {
+    border-radius: 30%;
+    border-width: 1px;
+}
+
+#result{
+    font-size: 2em;
+}
+
+#history-list {
+    display: inline-block;
+    /* text-align: left; */
+    font-weight: bold;
+}

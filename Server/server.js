@@ -28,10 +28,31 @@ app.get('/calculator', (req, res) => {
     // define current object
     let currentObject = calculatorHistory[calculatorHistory.length-1];
     console.log('currentObject is:', currentObject);
-    // define operator using if else string conversion
-    if (currentObject === undefined){
+    
+    // Prevent error from undefined currentObject
+    if (currentObject == undefined || currentObject == null || currentObject == ''){
         return ''
     }
+
+    // Use split() method to seperate string elements 
+    // into an array
+    // reassign values based on that array
+    if (currentObject.hasOwnProperty('input') == false) {
+        return res.send(calculatorHistory);
+    }
+
+    let currentObjectArray = currentObject.input.split(/\+|\*|\-|\//);
+    console.log('currentObjectArray created by split():', currentObjectArray);
+    
+    // Use split array to assign two seperate inputs to evaluate
+    currentObject = {
+        inputOneProp: currentObjectArray[0],
+        inputTwoProp: currentObjectArray[1],
+        operator: currentObject.operator,
+        result: ''
+    }
+
+    // define operator using if else
     if (currentObject.operator == '+') {
         currentObject.result = Number(currentObject.inputOneProp) + Number(currentObject.inputTwoProp);
         console.log('currentObject is:', currentObject);
@@ -48,6 +69,10 @@ app.get('/calculator', (req, res) => {
         console.log("I am not in the if")
         console.log('no input for operator');
     }
+
+    // add object to array calculatorHistory
+    calculatorHistory.push(currentObject)
+
     console.log('currentObject.result is:', currentObject.result);
     console.log('full calculatorHistory array is:', calculatorHistory);
     res.send(calculatorHistory);
@@ -60,6 +85,14 @@ app.post('/calculator', (req,res) => {
     calculatorHistory.push(req.body);
     res.sendStatus(201)
 });
+
+// Delete route
+app.delete('/calculator', (req,res) =>{
+    console.log('in server-side app.delete!');
+    calculatorHistory = []
+    console.log('calculatorHistory in app.delete:', calculatorHistory);
+    res.sendStatus(204)
+})
 
 
 // Start the server
