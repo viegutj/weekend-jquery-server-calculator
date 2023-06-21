@@ -82,8 +82,12 @@ app.get('/calculator', (req, res) => {
 // ---- move logic to the app.post
 app.post('/calculator', (req,res) => {
     console.log('in server-side app.post!');
-    // req.body = currentObject
-    calculatorHistory.push(req.body);
+    req.body = currentObject
+
+
+
+    // push data to our array
+    // calculatorHistory.push(req.body);
     res.sendStatus(201)
 });
 

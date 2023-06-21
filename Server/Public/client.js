@@ -243,12 +243,17 @@ function render(response) {
 
 // Callback function for render
 function appendHistory(response) {
+    // test that we're recieving responses and are in appendHistory
     console.log('In appendHistory, response:', response);
-    $('#new-string').val('')
-        responseInputOne = response[response.length-1].inputOneProp
-        responseInputTwo = response[response.length-1].inputTwoProp
-        responseOperator = response[response.length-1].operator
-        responseResult = response[response.length-1].result
+    // clear div
+    $('#new-string').val('');
+    // create a loop that goes through response and prints ALL responses
+        for (item of response){
+        responseInputOne = response.inputOneProp
+        responseInputTwo = response.inputTwoProp
+        responseOperator = response.operator
+        responseResult = response.result
         responseHistoryString = `${responseInputOne} ${responseOperator} ${responseInputTwo} = ${responseResult}`
         $('#history-list').append('<li class="new-string">' + responseHistoryString + '</li>')
+        };
     }
