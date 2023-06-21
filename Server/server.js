@@ -40,7 +40,7 @@ app.get('/calculator', (req, res) => {
     if (currentObject.hasOwnProperty('input') == false) {
         return res.send(calculatorHistory);
     }
-
+    // Used operator input with escape characters from YouTube example
     let currentObjectArray = currentObject.input.split(/\+|\*|\-|\//);
     console.log('currentObjectArray created by split():', currentObjectArray);
     
@@ -79,6 +79,7 @@ app.get('/calculator', (req, res) => {
 })
 
 // Post route
+// ---- move logic to the app.post
 app.post('/calculator', (req,res) => {
     console.log('in server-side app.post!');
     // req.body = currentObject

@@ -79,6 +79,10 @@
     ## having great difficulties here, may skip
     - [ ] - call the post function for that item
 
-- [ ] - refactor
+- [x] - refactor
 
-- [ ] - Add styling 😎
+- [x] - Add styling 😎
+
+
+- [ ] move logic to app.post
+- [ ]make a loop to render to the functions
