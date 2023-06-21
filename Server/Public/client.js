@@ -236,6 +236,9 @@ function deleteButtonHandler(event) {
 // Render function
 function render(response) {
     console.log('Render function, the response is:', response);
+    if (response.length === 0) {
+        return
+    }
     appendHistory(response);
     $('#result').empty()
     $('#result').append('<p>' + response[response.length-1].result + '</p>')
