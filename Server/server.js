@@ -62,7 +62,7 @@ app.post('/calculator', (req,res) => {
         operator: currentObject.operator,
         result: ''
     }
-
+    console.log('currentObject is:', currentObject);
     // define operator using if else
     if (currentObject.operator == '+') {
         currentObject.result = Number(currentObject.inputOneProp) + Number(currentObject.inputTwoProp);

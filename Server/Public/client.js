@@ -7,6 +7,7 @@ $(document).ready(onReady)
 //declare global variables
 let inputValue;
 let operator;
+let myBigArray;
 
 // create our jQuery onReady() function for user events and to retrieve history
 function onReady() {
@@ -41,16 +42,17 @@ function onReady() {
 function runPreviousSubmit(event) {
     event.preventDefault();
     console.log('in function runPreviousSubmit()!!');
-    // convert clicked string to text and store as variable for POST
-    console.log($(this).text());
-    inputValue = $(this).text();
-    function postOldData(){
+
+    let index = $(this).data('index');
+    console.log('index is:', index);
+    myBigArray.index
+    console.log('myBigArray[index] is:', myBigArray[index]);
         $.ajax({
             method:'POST',
             url:'/calculator',
             data: {
-                input: inputValue,
-                operator: operator,
+                input: `${myBigArray[index].inputOneProp} ${myBigArray[index].operator} ${myBigArray[index].inputTwoProp}`,
+                operator: myBigArray[index].operator,
                 result: ''
             }
         }).then(function(response){
@@ -60,9 +62,7 @@ function runPreviousSubmit(event) {
     }).catch(function(error){
     alert('Something went wrong in POST', error)
     })}
-    // call function
-    postOldData();
-}
+
 
 // create GET function
 // logging an error on refresh. Split() method from stretch goal is
@@ -74,6 +74,7 @@ function getHistory(){
     }).then(function(response){
         console.log('In client side getHistory!');
         console.log('GET response is:', response);
+        myBigArray = response;
         render(response);
     }).catch(function(error){
         alert('Request Failed!!');
@@ -251,12 +252,13 @@ function appendHistory(response) {
     // clear div
     $('#history-list').empty();
     // create a loop that goes through response and prints ALL responses
-    for (item of response){
+    for (let index = 0; index < response.length; index++) {
+        const item = response[index];
         responseInputOne = item.inputOneProp
         responseInputTwo = item.inputTwoProp
         responseOperator = item.operator
         responseResult = item.result
         responseHistoryString = `${responseInputOne} ${responseOperator} ${responseInputTwo} = ${responseResult}`
-        $('#history-list').append('<li class="new-string">' + responseHistoryString + '</li>')
+        $('#history-list').append(`<li class="new-string" data-index=${index}>${responseInputOne} ${responseOperator} ${responseInputTwo} = ${responseResult}</li>`)
     };
     }
